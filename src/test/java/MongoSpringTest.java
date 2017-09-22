@@ -65,8 +65,6 @@ public class MongoSpringTest extends AbstractJUnit4SpringContextTests {
         try {
             app = new ClassPathXmlApplicationContext(new String[] { "classpath:application.xml"});
 
-            //从配置文件中获取实例（包扫描），实例名称要与@Repository("sysLogDaoImpl")中的名字一致
-//            sysLogDaoImpl = (SysLogDao) app.getBean("sysLogDaoImpl");
             collectionName ="SysLog";
             MongoOperations mongoOps = new MongoTemplate(new Mongo("192.168.1.30",27017), "test");
 
@@ -100,7 +98,7 @@ public class MongoSpringTest extends AbstractJUnit4SpringContextTests {
         sysLog.setContentData("测试service泛型,id自增");
 //        mongoBaseService.save(null,sysLog,collectionName);
         OperationLog operationLog = new OperationLog();
-        operationLog.setUserName("测试resource注解");
+        operationLog.setUserName("测试jar包");
 //        operationLog.setId("12345678");
         mongoBaseService.save(operationLog,"OperationLog");
     }
